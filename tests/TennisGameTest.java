@@ -46,5 +46,43 @@ public class TennisGameTest {
 		game.player1Scored();
 		// This statement should cause an exception
 		game.player1Scored();			
-	}		
+	}
+	@Test public void testTennisGame_returndefault (){
+	
+		
+	}
+	@Test
+	public void testTennisGame_EahcPlayerWin4Points_Score_1540() throws TennisGameException {
+		//Arrange
+		TennisGame game = new TennisGame();
+		//Act
+		game.player1Scored();
+		
+		game.player2Scored();
+		game.player2Scored();
+		game.player2Scored();
+		
+		game.player2Scored();
+		
+		String score = game.getScore() ;
+		// Assert
+		assertEquals("Tie score incorrect", "15 - 40", score);		
+	}
+	@Test
+	public void testTennisGame_OnlyPlayer2Scores() throws TennisGameException {
+		//Arrange
+		TennisGame game = new TennisGame();
+		//Act
+		
+		game.player2Scored();
+		game.player2Scored();
+		game.player2Scored();
+		
+		game.player2Scored();
+		
+		String score = game.getScore() ;
+		// Assert
+		assertEquals("player2 wins", score);		
+	}
+	
 }
